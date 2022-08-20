@@ -34,9 +34,7 @@ function Contacts({ contacts, setContactMessageIndex, setChangeSection }) {
           };
           changeUnreadStatus();
           selectChatId(contacts, id, setContactMessageIndex);
-          if (selectedChat === id) {
-            setChangeSection(true);
-          }
+          setChangeSection(true);
           setSelectedChat(id);
         }}
         onKeyDown={(e) => e.key === 'Enter'
