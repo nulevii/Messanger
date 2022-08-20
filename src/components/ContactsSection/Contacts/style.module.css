@@ -1,0 +1,58 @@
+
+.user-info {
+
+  display: flex;
+  justify-content:flex-start;
+  font-family: 'Roboto', sans-serif;
+  border-bottom: 1px solid rgb(230, 229, 229);
+  height: 4rem;
+  padding-right: 0.6rem;
+}
+
+.user-info :hover {
+  cursor: pointer;
+}
+
+.name-and-last-message{
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+align-items:flex-start;
+justify-content: center;
+width: 50%;
+flex-grow: 1;
+}
+
+.user-name{
+font-size: 0.9rem;
+font-weight: 400;
+margin: 0;
+margin-bottom: 0.1rem;
+user-select: none;
+}
+
+.last-message{
+font-size: 0.85rem;
+  color: #aaaaaa;
+margin: 0;
+word-wrap: break-word;
+user-select: none;
+max-width: 24vw;
+
+}
+
+.last-message-date-container{
+  max-width: 22%;
+  text-align: end;
+}
+
+.last-message-date{
+font-size: 0.75rem;
+user-select: none;
+}
+
+@media screen and (max-width: 965px) {
+  .last-message{
+    max-width: 70vw;
+  }
+}

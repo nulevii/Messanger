@@ -1,0 +1,41 @@
+.header{
+display: flex;
+background-color: #f5f5f5;
+  border-bottom: 1px solid rgb(230, 229, 229);
+
+  align-items: center;
+
+}
+
+.scroll-button{
+width: 1px;
+height: 1px;
+visibility: hidden
+}
+.scroll-button-label{
+  margin-left: auto;
+  border-radius: 50%;
+  border: none;
+  visibility: hidden;
+}
+.scroll-button-immage{
+  color: lightgray;
+  font-size: 2rem;
+  cursor: pointer;
+}
+@media screen and (max-width: 965px) {
+.scroll-button-label{
+  visibility: visible;
+}
+
+}
+
+
+.chat-section{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow:  hidden auto;
+  height: calc(100vh - 12.2rem)
+}
+

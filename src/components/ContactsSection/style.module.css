@@ -1,0 +1,13 @@
+.contacts-header-text{
+  margin: 2rem 0.6rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #5591b4;
+    
+}
+
+.contacts{
+    height: calc(100vh - 8.3rem);
+  overflow: hidden auto;
+}

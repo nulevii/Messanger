@@ -1,0 +1,52 @@
+
+
+.message-wrapper{
+    margin-top: 0.3rem;
+    display: flex;
+    align-items: center;
+}
+
+
+.user-img{
+  margin: 0rem 0.3rem !important
+}
+
+.message-text{
+  padding: 0.8rem;
+  border-radius: 2.2rem;
+  max-width: 50vw;
+  flex-shrink: 0;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.message-send-time{
+font-size: 0.7rem;
+color: #aaaaaa;;
+margin-top: 0.3rem;
+margin-bottom: 1rem;
+}
+
+.message-layout .message-text {
+  background-color: #3e4656;
+  color: #ffffff;
+}
+
+.message-layout .message-send-time{
+margin-left: 3.1rem;
+}
+
+
+.my-message-layout .message-text {
+  background-color: #e7e7e7;
+  margin-right: 0.4rem;
+}
+
+.my-message-layout .message-wrapper{
+  justify-content: flex-end;
+}
+
+.my-message-layout .message-send-time{
+text-align: right;
+margin-right: 0.4rem;
+}

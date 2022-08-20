@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e6e5e5 #ffffff;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #e6e5e5;
+}
+
+.body {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/stripes-light.png');
+}
+.main {
+  display: flex ;
+  flex-wrap: nowrap;
+  font-family: 'Roboto', sans-serif;
+  width: 100vw;
+  max-width: 1800px;
+  overflow: hidden;
+
+}
+.contacts-section{
+  background-color: #ffffff;
+  width: 35vw;
+  border: 1px solid #e6e5e5;
+  margin-right: -1px;
+  overflow: hidden;
+}
+
+.chat-section{
+  background-color: #ffffff;
+  height: 100vh;
+  flex-grow: 1;
+  position: relative;
+    border: 1px solid #e6e5e5;
+  overflow: hidden;
+}
+
+
+.selected{
+  background-color: whitesmoke;
+}
+
+@media screen and (max-width: 965px) {
+  .body{
+    display: block;
+  }
+  .main {
+  flex-wrap: wrap;
+  width: 200vw;
+  max-width: 200vw;
+}
+.contacts-section{
+    position: relative;
+  width: 100vw;
+  transition: right 0.1s, ;
+  right: 0;
+}
+.chat-section{
+  position: relative;
+  width: 100vw;
+}
+
+.contacts-section-hide{
+
+  position: relative;
+  right: 100vw;
+}
+}
