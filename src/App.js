@@ -14,7 +14,7 @@ function App() {
   const [contacts, setContacts] = useState(localStorageConversations);
   const [contactId, setContactMessageIndex] = useState('1');
   const [changeSection, setChangeSection] = useState(false);
-  console.log(localStorageConversations);
+
   const initialSelect = () => contacts.find((contact) => contact).id;
   useEffect(() => {
     setContactMessageIndex(initialSelect());
