@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import { Context } from './Context';
 import SearchSection from './components/SearchSection';
 import ContactsSection from './components/ContactsSection';
 import ChatSections from './components/ChatSection';
@@ -28,35 +29,38 @@ function App() {
   };
 
   return (
-    <main className="main">
-      <section className="contacts-section ">
-        <SearchSection
-          conversations={localStorageConversations}
-          findPerson={findPerson}
-          setChangeSection={setChangeSection}
-        />
-        <ContactsSection
-          contacts={contacts}
-          setContactMessageIndex={setContactMessageIndex}
-          setChangeSection={setChangeSection}
-        />
-      </section>
-      <section
-        className={`chat-section ${
-          changeSection ? 'contacts-section-hide' : ''
-        }`}
-      >
-        <ChatSections
-          contactMessages={selectedChat}
-          sendMessageProps={{
-            contactId,
-            setChat: setContacts,
-          }}
-          setChangeSection={setChangeSection}
+    <Context.Provider value={{
+      contacts,
+      setContactMessageIndex,
+      setChangeSection,
 
-        />
-      </section>
-    </main>
+      sendMessageProps: {
+        contactId,
+        setChat: setContacts,
+      },
+    }}
+    >
+      <main className="main">
+        <section className="contacts-section ">
+          <SearchSection
+            conversations={localStorageConversations}
+            findPerson={findPerson}
+            setChangeSection={setChangeSection}
+          />
+          <ContactsSection />
+        </section>
+        <section
+          className={`chat-section ${
+            changeSection ? 'contacts-section-hide' : ''
+          }`}
+        >
+          <ChatSections
+            contactMessages={selectedChat}
+            setChangeSection={setChangeSection}
+          />
+        </section>
+      </main>
+    </Context.Provider>
   );
 }
 

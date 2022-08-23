@@ -1,15 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 
 import { MdOutlineSend } from 'react-icons/md';
 import TextareaAutosize from 'react-textarea-autosize';
 import uniqid from 'uniqid';
 
+import { Context } from '../../../Context';
 import styles from './style.module.css';
 import { sendMessage } from '../../../utilities/sendMessage';
 import { getMessage } from '../../../utilities/getMessage';
 
-function SendMessageForm({ sendMessageProps, scrollToBottom }) {
-  const { contactId, setChat } = sendMessageProps;
+function SendMessageForm({ scrollToBottom }) {
+  const { sendMessageProps: { contactId, setChat } } = useContext(Context);
   const messageRef = useRef(null);
 
   const sendAnsver = () => {

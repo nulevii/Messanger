@@ -1,10 +1,13 @@
 import { AiOutlineCheckCircle, AiFillMessage } from 'react-icons/ai';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
+import { Context } from '../../../Context';
 import styles from './style.module.css';
 import { selectChatId } from '../../../utilities/selectChatId';
 
-function Contacts({ contacts, setContactMessageIndex, setChangeSection }) {
+function Contacts() {
+  const { contacts, setContactMessageIndex, setChangeSection } = useContext(Context);
+
   const initialSelect = () => contacts.find((contact) => contact).id;
 
   const [selectedChat, setSelectedChat] = useState('0');
