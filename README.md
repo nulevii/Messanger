@@ -1,4 +1,4 @@
-# Messanger
+# Messenger
 
 I used React, React Hooks, CSS Modules, React Icons API and Chuck Norris Jokes Api to create this App.
 
