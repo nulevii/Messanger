@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 import { Context } from './Context';
 import SearchSection from './components/SearchSection';
@@ -28,8 +28,8 @@ function App() {
     setContacts(newContacts);
   };
 
-  return (
-    <Context.Provider value={{
+  const contextData = useMemo(
+    () => ({
       contacts,
       setContactMessageIndex,
       setChangeSection,
@@ -38,8 +38,12 @@ function App() {
         contactId,
         setChat: setContacts,
       },
-    }}
-    >
+    }),
+    [contacts, contactId],
+  );
+
+  return (
+    <Context.Provider value={contextData}>
       <main className="main">
         <section className="contacts-section ">
           <SearchSection

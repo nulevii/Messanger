@@ -9,6 +9,17 @@
   display: flex;
   align-items: center;
 }
+.login-btn{
+  color: #556080;
+  margin-left: 0.5rem;
+}
+.login-btn:hover{
+color: black;
+}
+
+.login-btn button {
+  visibility: hidden;
+}
 .scroll-button{
 width: 1px;
 height: 1px;
