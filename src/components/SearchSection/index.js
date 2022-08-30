@@ -33,9 +33,12 @@ function SearchSection(props) {
       },
       [],
     );
-    // google.accounts.id.renderButton()
+    google.accounts.id.renderButton(
+      document.getElementById('singInDiv'),
+      { theme: 'outline' },
+    );
+
     google.accounts.id.prompt();
-    console.log('heool');
   }, []);
 
   return (
@@ -46,10 +49,8 @@ function SearchSection(props) {
           <AiOutlineCheckCircle className="user-img-tick" />
         </figure>
 
-        <div>
-          {userName}
-        </div>
-        <label className={styles['login-btn']}>
+        <div>{userName}</div>
+        <label id="singInDiv" className={styles['login-btn']}>
           Login
           <button
             type="button"
