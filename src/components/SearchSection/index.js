@@ -1,45 +1,50 @@
 import {
   AiOutlineSearch,
   AiOutlineCheckCircle,
+  AiOutlineLogout,
 } from 'react-icons/ai';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 import styles from './style.module.css';
 
 function SearchSection(props) {
   const { findPerson, conversations, setChangeSection } = props;
+  const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('userObject')));
+  const loginElement = useRef(null);
 
-  const [userInfo, setUserInfo] = useState({});
+  const userImg = userInfo ? userInfo.picture : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+  const userName = userInfo ? userInfo.name : '';
 
-  const userImg = userInfo.picture || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
-  const userName = userInfo.name || '';
   const handleCallbackResponse = (response) => {
     const userObject = jwt_decode(response.credential);
-    // localStorage.setItem('userObject', userObject);
+    localStorage.setItem('userObject', JSON.stringify(userObject));
     setUserInfo(userObject);
   };
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize(
-      {
-        client_id:
-          '423488661964-ln5nhcimsgdatc68sh13ihd1s861hata.apps.googleusercontent.com',
-        callback: handleCallbackResponse,
-      },
-      [],
-    );
-    google.accounts.id.renderButton(
-      document.getElementById('singInDiv'),
-      { theme: 'outline' },
-    );
 
-    google.accounts.id.prompt();
-  }, []);
+  useEffect(() => {
+    if (!userInfo) {
+      /* global google */
+      google.accounts.id.initialize(
+        {
+          client_id:
+            '423488661964-ln5nhcimsgdatc68sh13ihd1s861hata.apps.googleusercontent.com',
+          callback: handleCallbackResponse,
+        },
+        [],
+      );
+
+      google.accounts.id.renderButton(loginElement.current, {
+        theme: 'outline',
+      });
+
+      google.accounts.id.prompt();
+    }
+  });
 
   return (
     <section className={styles.section}>
@@ -50,13 +55,21 @@ function SearchSection(props) {
         </figure>
 
         <div>{userName}</div>
-        <label id="singInDiv" className={styles['login-btn']}>
-          Login
+        <div
+          ref={loginElement}
+          style={!userInfo ? { display: 'block' } : { display: 'none' }}
+        />
+        <label
+          className={styles['login-btn']}
+          style={userInfo ? { display: 'block' } : { display: 'none' }}
+        >
+          <AiOutlineLogout />
           <button
             type="button"
             onClick={() => {
+              localStorage.removeItem('userObject');
               document.cookie = 'g_state=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-              google.accounts.id.prompt();
+              setUserInfo(null);
             }}
           />
         </label>
